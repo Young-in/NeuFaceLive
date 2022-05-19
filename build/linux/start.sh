@@ -19,7 +19,7 @@ while getopts 'cd:h' opt; do
             ;;
    
         ?|h)
-            printf "Usage:\n$(basename $0) [-d] /path/to/your/data/folder\n"
+            printf "Usage:\n$(basename $0) [-d] /data/deepfacelive_data\n"
             exit 1
             ;;
     esac
