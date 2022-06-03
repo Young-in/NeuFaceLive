@@ -255,10 +255,12 @@ class FaceMergerWorker(BackendWorker):
         print(f"x offset: {state.face_x_offset}")
         if state.face_x_offset < 0.0001:
             print(f"run seamlessClone")
+            l, t, w, h = cv2.boundingRect(ImageProcessor(frame_face_mask).to_uint8().get_image('HWC'))
+            s_maskx, s_masky = int(l + w/2), int(t + h/2)
             out_merged_frame = cv2.seamlessClone(ImageProcessor(frame_face_swap_img).to_uint8().get_image('HWC'),
                                                  ImageProcessor(frame_image).to_uint8().get_image('HWC'),
                                                  ImageProcessor(frame_face_mask).to_uint8().get_image('HWC'),
-                                                 (frame_width // 2, frame_height // 2), cv2.MIXED_CLONE)
+                                                 (s_maskx, s_masky), cv2.MIXED_CLONE)
             out_merged_frame = ImageProcessor(out_merged_frame).to_ufloat32().get_image('HWC')
 
         if do_color_compression and state.color_compression != 0:
