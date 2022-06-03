@@ -252,7 +252,8 @@ class FaceMergerWorker(BackendWorker):
             out_merged_frame = ne.evaluate('frame_image*(one_f-frame_face_mask) + frame_image*frame_face_mask*(one_f-opacity) + frame_face_swap_img*frame_face_mask*opacity')
         
         # Poisson Blending
-        out_merged_frame = cv2.seamlessClone(frame_frace_swap_img, frame_image, frame_face_mask, (frame_height // 2, frame_width // 2), cv2.MIXED_CLONE)
+        if state.face_x_offset < 0.0001:
+            out_merged_frame = cv2.seamlessClone(frame_frace_swap_img, frame_image, frame_face_mask, (frame_height // 2, frame_width // 2), cv2.MIXED_CLONE)
 
         if do_color_compression and state.color_compression != 0:
             color_compression = max(4, (127.0 - state.color_compression) )
