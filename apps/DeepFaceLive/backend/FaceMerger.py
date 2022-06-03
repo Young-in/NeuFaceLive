@@ -258,7 +258,7 @@ class FaceMergerWorker(BackendWorker):
             out_merged_frame = cv2.seamlessClone(ImageProcessor(frame_face_swap_img).to_uint8().get_image('HWC'),
                                                  ImageProcessor(frame_image).to_uint8().get_image('HWC'),
                                                  ImageProcessor(frame_face_mask).to_uint8().get_image('HWC'),
-                                                 (frame_height // 2, frame_width // 2), cv2.MIXED_CLONE)
+                                                 (frame_width // 2, frame_height // 2), cv2.MIXED_CLONE)
             out_merged_frame = ImageProcessor(out_merged_frame).to_ufloat32().get_image('HWC')
 
         if do_color_compression and state.color_compression != 0:
@@ -314,7 +314,7 @@ class FaceMergerWorker(BackendWorker):
             frame_final_t = lib_cl.any_wise('O = I0*(1.0-I1) + I0*I1*(1.0-I3) + I2*I1*I3', frame_image_t, frame_face_mask_t, frame_face_swap_img_t, np.float32(opacity), dtype=np.float32)
         
         # Poisson Blending
-        frame_final_t = cv2.seamlessClone(frame_face_swap_img_t.np(), frame_image_t, frame_face_mask_t, (frame_height // 2, frame_width // 2), cv2.MIXED_CLONE)
+        frame_final_t = cv2.seamlessClone(frame_face_swap_img_t.np(), frame_image_t.np(), frame_face_mask_t.np(), (frame_width // 2, frame_height // 2), cv2.MIXED_CLONE)
         frame_final_t = lib_cl.Tensor.from_value(frame_final_t)
 
         if do_color_compression and state.color_compression != 0:
