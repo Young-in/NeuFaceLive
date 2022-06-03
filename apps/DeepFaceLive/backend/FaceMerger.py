@@ -233,7 +233,7 @@ class FaceMergerWorker(BackendWorker):
 
         # Combine face mask
         face_mask = ImageProcessor(face_mask).erode_blur(state.face_mask_erode, state.face_mask_blur, fade_to_border=True).get_image('HWC')
-        frame_face_mask = ImageProcessor(face_mask).warp_affine(aligned_to_source_uni_mat, frame_width, frame_height).clip2( (1.0/255.0), 0.0, (1.0/255.0), 1.0).get_image('HWC')
+        frame_face_mask = ImageProcessor(face_mask).warp_affine(aligned_to_source_uni_mat, frame_width, frame_height).clip2( (1.0/255.0), 0.0, 1.0, 1.0).get_image('HWC')
 
         face_swap_img = ImageProcessor(face_swap_img).to_ufloat32().get_image('HWC')
 
@@ -260,7 +260,7 @@ class FaceMergerWorker(BackendWorker):
             out_merged_frame = cv2.seamlessClone(ImageProcessor(frame_face_swap_img).to_uint8().get_image('HWC'),
                                                  ImageProcessor(frame_image).to_uint8().get_image('HWC'),
                                                  ImageProcessor(frame_face_mask).to_uint8().get_image('HWC'),
-                                                 (s_maskx, s_masky), cv2.MIXED_CLONE)
+                                                 (s_maskx, s_masky), cv2.NORMAL_CLONE)
             out_merged_frame = ImageProcessor(out_merged_frame).to_ufloat32().get_image('HWC')
 
         if do_color_compression and state.color_compression != 0:
