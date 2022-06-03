@@ -233,7 +233,7 @@ class FaceMergerWorker(BackendWorker):
 
         # Combine face mask
         face_mask = ImageProcessor(face_mask).erode_blur(state.face_mask_erode, state.face_mask_blur, fade_to_border=True).get_image('HWC')
-        frame_face_mask = ImageProcessor(face_mask).warp_affine(aligned_to_source_uni_mat, frame_width, frame_height).clip2( (1.0/255.0), 0.0, 1.0, 1.0).get_image('HWC')
+        frame_face_mask = ImageProcessor(face_mask).warp_affine(aligned_to_source_uni_mat, frame_width, frame_height).clip2( (1.0/255.0), 0.0, (1.0/255.0), 1.0).get_image('HWC')
 
         face_swap_img = ImageProcessor(face_swap_img).to_ufloat32().get_image('HWC')
 
