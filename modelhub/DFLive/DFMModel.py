@@ -50,8 +50,11 @@ def get_available_models_info(models_path : Path) -> List[DFMModelInfo]:
             DFMModelInfo(name='Morpheus3D 30200', model_path=models_path / f'Morpheus3D_30200.dfm', url=rf'https://github.com/Young-in/NeuFaceLive/releases/download/model/Morpheus3D_30200.dfm'),
             DFMModelInfo(name='Morpheus3D 100000', model_path=models_path / f'Morpheus3D_100000.dfm', url=rf'https://github.com/Young-in/NeuFaceLive/releases/download/model/Morpheus3D_100000.dfm'),
         ]
+    # morpheus_models = [
+    #     DFMModelInfo(name=f'Morpheus3D {iters}', model_path=models_path / f'Morpheus3D_{iters}.dfm', url=fr'https://github.com/Young-in/NeuFaceLive/releases/download/model/periodic_SAEHD_model_{iters}.dfm') for iters in range(0, 27000 + 1, 1000)
+    # ]
     morpheus_models = [
-        DFMModelInfo(name=f'Morpheus3D {iters}', model_path=models_path / f'Morpheus3D_{iters}.dfm', url=fr'https://github.com/Young-in/NeuFaceLive/releases/download/model/periodic_SAEHD_model_{iters}.dfm') for iters in range(0, 27000 + 1, 1000)
+        DFMModelInfo(name=f'Morpheus3D {iters}', model_path=models_path / f'Morpheus3D_{iters}.dfm', url=fr'https://github.com/Young-in/NeuFaceLive/releases/download/model/new_SAEHD_model_{iters}.dfm') for iters in range(0, 10000 + 1, 1000)
     ]
     dfm_models += morpheus_models
 
