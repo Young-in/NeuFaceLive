@@ -44,9 +44,9 @@ def get_available_models_info(models_path : Path) -> List[DFMModelInfo]:
             DFMModelInfo(name='Tim Chrys', model_path=models_path / f'Tim_Chrys.dfm', url=rf'https://github.com/iperov/DeepFaceLive/releases/download/TIM_CHRYS/Tim_Chrys.dfm'),
             DFMModelInfo(name='Zahar Lupin', model_path=models_path / f'Zahar_Lupin.dfm', url=rf'https://github.com/iperov/DeepFaceLive/releases/download/ZAHAR_LUPIN/Zahar_Lupin.dfm'),
             DFMModelInfo(name='Morpheus3D Model', model_path=models_path / f'Morpheus3D.dfm', url=rf'https://github.com/Young-in/NeuFaceLive/releases/download/model/Morpheus3D_Model.dfm'),
-            # DFMModelInfo(name='Morpheus3D 11000', model_path=models_path / f'Morpheus3D_11000.dfm', url=rf'https://github.com/Young-in/NeuFaceLive/releases/download/model/Morpheus3D_11000.dfm'),
-            # DFMModelInfo(name='Morpheus3D 20000', model_path=models_path / f'Morpheus3D_20000.dfm', url=rf'https://github.com/Young-in/NeuFaceLive/releases/download/model/Morpheus3D_20000.dfm'),
-            # DFMModelInfo(name='Morpheus3D 20500', model_path=models_path / f'Morpheus3D_20500.dfm', url=rf'https://github.com/Young-in/NeuFaceLive/releases/download/model/Morpheus3D_20500.dfm'),
+            DFMModelInfo(name='Morpheus3D 11000', model_path=models_path / f'Morpheus3D_11000.dfm', url=rf'https://github.com/Young-in/NeuFaceLive/releases/download/model/Morpheus3D_11000.dfm'),
+            DFMModelInfo(name='Morpheus3D 20000', model_path=models_path / f'Morpheus3D_20000.dfm', url=rf'https://github.com/Young-in/NeuFaceLive/releases/download/model/Morpheus3D_20000.dfm'),
+            DFMModelInfo(name='Morpheus3D 20500', model_path=models_path / f'Morpheus3D_20500.dfm', url=rf'https://github.com/Young-in/NeuFaceLive/releases/download/model/Morpheus3D_20500.dfm'),
             DFMModelInfo(name='Morpheus3D 30200', model_path=models_path / f'Morpheus3D_30200.dfm', url=rf'https://github.com/Young-in/NeuFaceLive/releases/download/model/Morpheus3D_30200.dfm'),
             DFMModelInfo(name='Morpheus3D 100000', model_path=models_path / f'Morpheus3D_100000.dfm', url=rf'https://github.com/Young-in/NeuFaceLive/releases/download/model/Morpheus3D_100000.dfm'),
         ]
@@ -55,6 +55,9 @@ def get_available_models_info(models_path : Path) -> List[DFMModelInfo]:
     # ]
     morpheus_models = [
         DFMModelInfo(name=f'Morpheus3D {iters}', model_path=models_path / f'Morpheus3D_{iters}.dfm', url=fr'https://github.com/Young-in/NeuFaceLive/releases/download/model/new_SAEHD_model_{iters}.dfm') for iters in range(0, 10000 + 1, 1000)
+    ]
+    pretrain_models = [
+        DFMModelInfo(name=f'Pretrain Model', model_path=models_path / f'Pretrain_Model.dfm', url=fr'https://github.com/Young-in/NeuFaceLive/releases/download/model/from_pretrain.dfm')
     ]
     dfm_models += morpheus_models
 
