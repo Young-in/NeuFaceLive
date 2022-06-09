@@ -59,7 +59,7 @@ def get_available_models_info(models_path : Path) -> List[DFMModelInfo]:
     pretrain_models = [
         DFMModelInfo(name=f'Pretrain Model', model_path=models_path / f'Pretrain_Model.dfm', url=fr'https://github.com/Young-in/NeuFaceLive/releases/download/model/from_pretrain.dfm')
     ]
-    dfm_models += morpheus_models
+    dfm_models += morpheus_models + pretrain_models
 
     # scan additional models in directory
     dfm_model_paths = [ celeb.get_model_path() for celeb in dfm_models]
