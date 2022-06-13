@@ -53,13 +53,25 @@ def get_available_models_info(models_path : Path) -> List[DFMModelInfo]:
     # morpheus_models = [
     #     DFMModelInfo(name=f'Morpheus3D {iters}', model_path=models_path / f'Morpheus3D_{iters}.dfm', url=fr'https://github.com/Young-in/NeuFaceLive/releases/download/model/periodic_SAEHD_model_{iters}.dfm') for iters in range(0, 27000 + 1, 1000)
     # ]
-    morpheus_models = [
-        DFMModelInfo(name=f'Morpheus3D {iters}', model_path=models_path / f'Morpheus3D_{iters}.dfm', url=fr'https://github.com/Young-in/NeuFaceLive/releases/download/model/new_SAEHD_model_{iters}.dfm') for iters in range(0, 10000 + 1, 1000)
+    # morpheus_models = [
+    #     DFMModelInfo(name=f'Morpheus3D {iters}', model_path=models_path / f'Morpheus3D_{iters}.dfm', url=fr'https://github.com/Young-in/NeuFaceLive/releases/download/model/new_SAEHD_model_{iters}.dfm') for iters in range(0, 10000 + 1, 1000)
+    # ]
+    # pretrain_models = [
+    #     DFMModelInfo(name=f'Pretrain Model', model_path=models_path / f'Pretrain_Model.dfm', url=fr'https://github.com/Young-in/NeuFaceLive/releases/download/model/from_pretrain.dfm')
+    # ]
+    # dfm_models += morpheus_models + pretrain_models
+    
+    bdns_models = [
+        DFMModelInfo(name=f'BDNS {iters}', model_path=models_path / f'BDNS_{iters}.dfm', url=fr'https://github.com/Young-in/NeuFaceLive/releases/download/model/bdns_model_{iters}.dfm') for iters in range(2000, 10000, 2000)
+    ] + [
+        DFMModelInfo(name=f'BDNS {iters}', model_path=models_path / f'BDNS_{iters}.dfm', url=fr'https://github.com/Young-in/NeuFaceLive/releases/download/model/bdns_model_{iters}.dfm') for iters in range(10000, 100000 + 1, 10000)
     ]
-    pretrain_models = [
-        DFMModelInfo(name=f'Pretrain Model', model_path=models_path / f'Pretrain_Model.dfm', url=fr'https://github.com/Young-in/NeuFaceLive/releases/download/model/from_pretrain.dfm')
+
+    oha0_models = [
+        DFMModelInfo(name=f'OhHayoung {iters}', model_path=models_path / f'OhHayoung_{iters}.dfm', url=fr'https://github.com/Young-in/NeuFaceLive/releases/download/model/new_SAEHD_model_{iters}.dfm') for iters in range(0, 10000 + 1, 1000)
     ]
-    dfm_models += morpheus_models + pretrain_models
+
+    dfm_models += bdns_models + oha0_models
 
     # scan additional models in directory
     dfm_model_paths = [ celeb.get_model_path() for celeb in dfm_models]
